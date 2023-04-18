@@ -1,0 +1,5 @@
+numpy==1.21.2
+pillow
+opencv-python==4.5.1.48
+pycocotools==2.0.2
+tqdm==4.62.3

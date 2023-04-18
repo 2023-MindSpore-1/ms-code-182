@@ -1,0 +1,87 @@
+backbone: "yolox_darknet53" #option for backbone, you can choose 'yolox_darknet53' or 'yolox_x'
+data_aug: True
+# path for local
+device_target: "Ascend" #"GPU"
+outputs_dir:  "/cache/model" #"/model" #"/home/work/user-job-dir/outputs/model/"
+#dir??? ../model
+# ======================================================
+# Train option
+save_graphs: False
+lr_scheduler: "yolox_warm_cos_lr"
+max_epoch: 5  #285
+total_epoch: 30  #300
+data_dir: "/cache/dataset/coco2017" #"/dataset/coco2017/"  # dataset base path
+# last no data aug related
+yolox_no_aug_ckpt: ""
+need_profiler: 0
+pretrained: ''
+resume_yolox: ''
+# data aug
+flip_prob: 0.5
+hsv_prob: 1.0
+# ========================================================\
+# dataset related
+per_batch_size: 8
+
+# network configuration
+depth_wise: False
+max_gt: 48
+num_classes: 80
+input_size: [640, 640]
+fpn_strides: [8, 16, 32]
+use_l1: False
+use_syc_bn: True
+
+# dynamic_k
+n_candidate_k: 10
+
+# optimizer and lr related
+lr: 0.01
+min_lr_ratio: 0.01
+warmup_epochs: 5
+weight_decay: 0.0005
+momentum: 0.9
+no_aug_epochs: 15
+# logging related
+log_interval: 56
+ckpt_interval: -1
+is_save_on_master: 1
+
+# distributed related
+is_distributed: 1 #0
+rank: 0
+group_size: 1
+bind_cpu: True
+device_num: 4 #8
+
+# modelarts
+enable_modelarts: False
+
+need_modelarts_dataset_unzip: True
+modelarts_dataset_unzip_name: "coco2017"
+
+data_url: ""
+train_url: ""
+checkpoint_url: ""
+data_path: "/home/work/user-job-dir/inputs/data/"
+output_path: "/model" #"/home/work/user-job-dir/outputs/model/"
+load_path: "/cache/checkpoint_path"
+ckpt_path: "/cache/output" #'/model'
+
+# Eval option
+log_path: "val/outputs/"
+val_ckpt: "0-2755_64.ckpt"
+conf_thre: 0.001
+nms_thre: 0.65
+
+# export and infer option
+result_path: ''
+file_format: 'MINDIR'
+export_bs: 1
+
+# run eval option
+interval: 5  # epoch interval for eval while training, 5 or 10 is suggested during the first data aug epochs, and 1 for the last epochs
+run_eval: True  # enable eval while training or not
+start_epoch: 0
+end_epoch: 20
+ema: True  # Use Exponential Moving Average or not

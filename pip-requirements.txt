@@ -1,0 +1,2 @@
+numpy-1.21.2-cp37-cp37m-manylinux_2_17_aarch64.manylinux2014_aarch64.whl
+pycocotools-2.0.2-cp37-cp37m-linux_aarch64.whl
